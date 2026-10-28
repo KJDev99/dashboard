@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  /* Matn: geometrik grotesk; sarlavhalar: optik o'lchamli yumshoq serif */
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
 }
 
 :root {
@@ -20,69 +22,6 @@
 
   --ok: #047857;
   --warn: #b45309;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-}
-
-/* Yorug' rejim — asosiy */
-:root {
-  /* Tasdiqlangan kategorik palitra (dataviz validator, sirt #ffffff: PASS) */
-  --c-1: #1d4ed8;
-  --c-2: #0d9488;
-  --c-3: #b45309;
-
-  --bg: #f1f3f6;
-  --surface: #ffffff;
-  --surface-2: #f7f8fa;
-  --line: #d8dde6;
-  --line-soft: #e8ecf2;
-
-  --ink-1: #16202e;
-  --ink-2: #4a586c;
-  --ink-3: #78869b;
-
-  --ok: #15803d;
-  --warn: #b45309;
-  --crit: #b91c1c;
-  --info: #1d4ed8;
-
-  /* Ketma-ket ramp — issiqlik xaritasi uchun, bitta hue, och -> to'q */
-  --ramp-1: #eef2ff;
-  --ramp-2: #c7d7fe;
-  --ramp-3: #93b4fd;
-  --ramp-4: #5b8def;
-  --ramp-5: #2f6ad9;
-  --ramp-6: #1d4ed8;
-}
-
-/* Qorong'i rejim — avtomatik emas, alohida tanlangan qadamlar */
-[data-theme='dark'] {
-  --c-1: #3b82f6;
-  --c-2: #0d9488;
-  --c-3: #d97706;
-
-  --bg: #0d1117;
-  --surface: #151b24;
-  --surface-2: #1b2430;
-  --line: #2b3542;
-  --line-soft: #222b37;
-
-  --ink-1: #e8edf5;
-  --ink-2: #a3b0c2;
-  --ink-3: #74839a;
-
-  --ok: #4ade80;
-  --warn: #fbbf24;
-  --crit: #f87171;
-  --info: #60a5fa;
-
-  /* Qorong'i rejimda ramp to'q -> yorqin yo'nalishda qayta tanlangan */
-  --ramp-1: #172234;
-  --ramp-2: #1c3355;
-  --ramp-3: #224a84;
-  --ramp-4: #2c64b4;
-  --ramp-5: #3b80dd;
-  --ramp-6: #60a5fa;
 }
 
 html {
@@ -115,11 +54,18 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  background-color: var(--bg);
-  color: var(--ink-1);
-  font-size: 13px;
 }
 
-table {
+/* Sarlavha shrifti: optik o'lchamni katta kegl uchun sozlaymiz,
+   "soft" o'qi bilan yumshoqroq ko'rinish beramiz. */
+.font-display {
+  font-variation-settings: 'SOFT' 24, 'WONK' 1;
+  letter-spacing: -0.015em;
+}
+
+/* Raqamlar grotesk shriftda bir xil kenglikda tursin */
+.num {
+  font-family: var(--font-sans);
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }

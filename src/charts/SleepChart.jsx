@@ -99,7 +99,7 @@ export default function SleepChart({ rows }) {
               <li key={p.key} className="flex items-center gap-2">
                 <span className="size-2 rounded-sm" style={{ background: p.color }} />
                 <span className="text-[var(--ink-2)]">{p.label}</span>
-                <span className="ml-auto tabular-nums text-[var(--ink-1)]">{rows[hover][p.key]}s</span>
+                <span className="num ml-auto text-[var(--ink-1)]">{rows[hover][p.key]}s</span>
               </li>
             ))}
           </ul>
