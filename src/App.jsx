@@ -1,20 +1,16 @@
 import { useState } from 'react'
-import FloatingNav from './components/FloatingNav'
-import GlassCard from './components/GlassCard'
-import VitalTile from './components/VitalTile'
-import ActivityChart from './charts/ActivityChart'
-import Rings from './charts/Rings'
-import SleepChart from './charts/SleepChart'
-import { activity, days, goals, rings, sleep, vitals, workouts } from './data'
+import Sidebar from './components/Sidebar'
+import TopBar from './components/TopBar'
+import Card from './components/Card'
+import StatTile from './components/StatTile'
+import InvoiceTable from './components/InvoiceTable'
+import Icon from './components/Icon'
+import AreaChart from './charts/AreaChart'
+import BarList from './charts/BarList'
+import StackedBar from './charts/StackedBar'
+import { channels, invoices, kpis, months, mrr, plans } from './data'
 
-const vitalColors = ['var(--c-3)', 'var(--c-2)', 'var(--c-1)', 'var(--c-2)']
-
-const typeIcon = {
-  yugurish: 'M13 4a2 2 0 1 0 0-.1M9 20l2-5 3-2-1-5 4 3 3 1M6 12l3-3',
-  zal: 'M4 9v6M8 7v10M16 7v10M20 9v6M8 12h8',
-  suzish: 'M3 18c2 0 2-1.5 4-1.5S9 18 11 18s2-1.5 4-1.5S17 18 19 18M6 11l5-4 4 3M17 7a1.5 1.5 0 1 0 0-.1',
-  velo: 'M6 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6M18 18a3 3 0 1 0 0-6 3 3 0 0 0 0 6M9 15l3-7h3M9 8h3',
-}
+const tileColors = ['var(--c-1)', 'var(--c-2)', 'var(--c-3)', 'var(--c-4)']
 
 export default function App() {
   const [tab, setTab] = useState('home')
@@ -52,20 +48,14 @@ export default function App() {
             <ActivityChart labels={days} data={activity.steps} />
           </GlassCard>
 
-          <GlassCard title="Bugungi halqalar" subtitle="Maqsadlarga nisbatan">
-            <Rings items={rings} />
-          </GlassCard>
-        </div>
+  const series = [
+    { key: 'cur', label: '2026', color: 'var(--c-1)', data: mrr[2026] },
+    { key: 'prev', label: '2025', color: 'var(--c-2)', data: mrr[2025], dashed: true },
+  ]
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {vitals.map((v, i) => (
-            <VitalTile key={v.label} item={v} color={vitalColors[i]} />
-          ))}
-        </div>
-
-        <div className="grid gap-5 lg:grid-cols-[1.35fr_1fr]">
-          <GlassCard title="Uyqu tuzilmasi" subtitle="Fazalar bo‘yicha, soatda">
-            <SleepChart rows={sleep} />
+  return (
+    <div className="flex min-h-dvh">
+      <Sidebar />
 
             <dl className="mt-6 grid grid-cols-3 gap-3">
               {[
@@ -137,10 +127,21 @@ export default function App() {
                       {w.kcal}
                       <span className="ml-0.5 text-[11px] font-normal text-[var(--ink-3)]">kkal</span>
                     </span>
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
+                  ))}
+                </div>
+              }
+            >
+              <AreaChart labels={months} series={series} formatValue={(v) => `$${v}K`} />
+            </Card>
+
+            <Card title="Tarif bo‘yicha daromad" subtitle="Oktabr oyi yakuni">
+              <StackedBar items={plans} />
+              <div className="mt-6 rounded-lg bg-slate-50 p-4">
+                <p className="text-xs text-[var(--ink-2)]">O‘rtacha chek</p>
+                <p className="mt-1 text-xl font-semibold tabular-nums">$1 642</p>
+                <p className="mt-1 text-xs text-[var(--ok)]">+$118 o‘tgan oyga nisbatan</p>
+              </div>
+            </Card>
           </div>
         </div>
       </main>
