@@ -1,1 +1,56 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "Archivo", "Arial Black", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Tasdiqlangan kategorik palitra (dataviz validator, sirt #ffffff: PASS) */
+  --c-1: #2563eb;
+  --c-2: #ea580c;
+  --c-3: #059669;
+  --c-4: #9333ea;
+
+  --ink: #10100e;
+  --ink-2: #44443e;
+  --ink-3: #6e6e66;
+
+  --paper: #fdfcf7;
+  --card: #ffffff;
+  --accent: #ffd400;
+  --accent-2: #ff6b4a;
+
+  --edge: var(--ink);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(16, 16, 14, 0.045) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(90deg, rgba(16, 16, 14, 0.045) 0 1px, transparent 1px 28px);
+}
+
+/* Brutal qoliplar: qalin chegara + siljigan qattiq soya */
+.brut {
+  border: 3px solid var(--edge);
+  box-shadow: 6px 6px 0 0 var(--edge);
+}
+
+.brut-sm {
+  border: 2px solid var(--edge);
+  box-shadow: 3px 3px 0 0 var(--edge);
+}
+
+.brut-press {
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.brut-press:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 0 var(--edge);
+}
