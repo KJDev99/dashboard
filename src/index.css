@@ -1,6 +1,25 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Tasdiqlangan kategorik palitra (dataviz validator, sirt #eef2f9: PASS) */
+  --c-1: #0d9488;
+  --c-2: #6366f1;
+  --c-3: #db2777;
+
+  --ink-1: #10172a;
+  --ink-2: #44506b;
+  --ink-3: #7b86a1;
+
+  --glass: rgba(255, 255, 255, 0.55);
+  --glass-strong: rgba(255, 255, 255, 0.72);
+  --glass-line: rgba(255, 255, 255, 0.8);
+
+  --ok: #047857;
+  --warn: #b45309;
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
@@ -71,6 +90,31 @@ html {
 }
 
 body {
+  color: var(--ink-1);
+  background-color: #e8edf7;
+  background-image:
+    radial-gradient(42rem 32rem at 8% 4%, rgba(99, 102, 241, 0.38), transparent 62%),
+    radial-gradient(38rem 30rem at 92% 0%, rgba(219, 39, 119, 0.3), transparent 58%),
+    radial-gradient(46rem 34rem at 60% 100%, rgba(13, 148, 136, 0.34), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Shisha qatlam: yarim shaffof sirt + yuqori yorug'lik chizig'i */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid var(--glass-line);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 20px 45px -28px rgba(16, 23, 42, 0.5);
+}
+
+.glass-soft {
+  background: rgba(255, 255, 255, 0.38);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   background-color: var(--bg);
   color: var(--ink-1);
   font-size: 13px;
