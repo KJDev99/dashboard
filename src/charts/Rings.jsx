@@ -42,7 +42,7 @@ export default function Rings({ items, size = 184 }) {
             <div className="flex items-baseline gap-2 text-sm">
               <span className="size-2.5 shrink-0 rounded-full" style={{ background: item.color }} />
               <span className="text-[var(--ink-2)]">{item.label}</span>
-              <span className="ml-auto font-semibold tabular-nums text-[var(--ink-1)]">
+              <span className="num ml-auto font-semibold text-[var(--ink-1)]">
                 {item.value}
                 <span className="font-normal text-[var(--ink-3)]">/{item.goal}</span>
               </span>
